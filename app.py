@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 from person import Person
 
 app = Flask(__name__)
@@ -6,7 +6,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'Hello World!'
+    events_list = ["Brussel brost", "Made in Asia", "EHackB", "Rock Werchter"]
+    return render_template("index.html", events = events_list)
 
 @app.get("/username/<pathvariable>")
 def get_user(pathvariable):
